@@ -1,16 +1,25 @@
-import {ReactElement} from "react";
+import {ChangeEvent, ReactElement} from "react";
 
-const Form = (): ReactElement => {
-    return (<form>
-        <div>
-            <label>Enter name</label>
-            <input/>
-        </div>
-        <div>
-            <label>Enter age</label>
-            <input/>
-        </div>
-    </form>)
+const Form = (props: { onSubmit: (arg0: ChangeEvent<HTMLInputElement>) => void; }): ReactElement => {
+
+    const handleSubmit = (e) => {
+        props.onSubmit(e)
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Enter name
+                    <input type="text" name="name"/>
+                </label>
+            </div>
+            <div>
+                <label>Age (Years)
+                    <input type="number" name="age"/>
+                </label>
+            </div>
+            <button type="submit">Submit</button>
+        </form>)
 }
 
 export default Form;
