@@ -1,17 +1,14 @@
-import Form from "./Form"
 import {ReactElement, useState} from "react";
+import Form from "./Form"
 import UsersList from "./UsersList";
+import {UserType} from "./Types";
+
 
 const Container = (): ReactElement => {
 
-    interface User {
-        name: string,
-        age: number
-    }
+    const [users, setUsers] = useState<UserType[]>([])
 
-    const [users, setUsers] = useState<User[]>([{name: "Lucy", age: 33}])
-
-    const addUser = ({name, age}: User): void => {
+    const addUser_cont = ({name, age}: UserType): void => {
         setUsers(prevUsers => [
             ...prevUsers,
             {name: name, age: age},
@@ -20,8 +17,8 @@ const Container = (): ReactElement => {
 
     return (
         <>
-            <Form onSubmit={addUser}/>
-            <UsersList/>
+            <Form onSubmit_cont={addUser_cont}/>
+            <UsersList users={users}/>
         </>
     )
 }
