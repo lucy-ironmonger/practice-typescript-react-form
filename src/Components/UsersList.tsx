@@ -1,15 +1,17 @@
 import {ReactElement} from "react";
+import User from "./User"
+import {UserType} from "./Types";
 
-const UsersList = (props: any): ReactElement => {
+const UsersList = (props: { users: UserType[] }): ReactElement => {
     return (
         <>
-            <div>Users</div>
+            <h2>Users</h2>
             {props.users && props.users.map(
-                (user: any) => {
+                (user: UserType) => {
                     return (
                         <>
-                        <div>{user.name} {user.age}</div>
-                    </>)
+                            <User name={user.name} age={user.age} key={Math.random()}/>
+                        </>)
                 }
             )}
         </>

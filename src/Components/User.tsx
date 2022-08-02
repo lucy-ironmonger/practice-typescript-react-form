@@ -1,11 +1,12 @@
-const User = (props: any) => {
+import {UserType} from "./Types";
+
+const User = (props: UserType ) => {
+    console.log("props", props)
     return (
         <>
-        <div>User</div>
-    <h3>{props.user.name}</h3>
-    <h3>{props.user.age}</h3>
-            </>
-)
+            <p>{props.name} {props.age}</p>
+        </>
+    )
 }
 
 export default User
